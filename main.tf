@@ -1,6 +1,6 @@
 data "alicloud_instance_types" "type" {
-  cpu_core_count = 2
-  memory_size    = 4
+  cpu_core_count = 1
+  memory_size    = 1
 }
 
 data "alicloud_images" "default" {
