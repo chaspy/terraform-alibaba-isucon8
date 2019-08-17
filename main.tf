@@ -34,6 +34,7 @@ resource "alicloud_instance" "web" {
   instance_name              = "web"
   vswitch_id                 = alicloud_vswitch.vsw.id
   internet_max_bandwidth_out = 5
+  host_name                  = "isucon8"
 }
 
 resource "alicloud_key_pair_attachment" "attachment" {
