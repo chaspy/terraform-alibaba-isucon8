@@ -43,3 +43,6 @@ resource "alicloud_security_group" "default" {
   vpc_id      = alicloud_vpc.vpc.id
 }
 
+output "ip" {
+  value = alicloud_instance.web.public_ip
+}
