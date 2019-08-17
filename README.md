@@ -15,3 +15,5 @@ $ terraform plan
 $ terraform apply
 # terraform destroy
 ```
+
+You can login to the instance with `ssh root@<output ip address>`
