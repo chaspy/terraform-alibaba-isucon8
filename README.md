@@ -1,5 +1,9 @@
 # terraform-alibaba-isucon8
 
+## Prerequisites
+- Add key-pair(public key) to Alibaba Cloud
+- Update keyname in main.tf
+
 ## Usage
 
 ```
@@ -9,4 +13,5 @@ $ source .envrc # or direnv allow
 $ terraform init
 $ terraform plan
 $ terraform apply
+# terraform destroy
 ```
