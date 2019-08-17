@@ -9,6 +9,11 @@ data "alicloud_images" "default" {
   owners      = "system"
 }
 
+resource "alicloud_vpc" "vpc" {
+  name       = "isucon8"
+  cidr_block = "172.16.0.0/12"
+}
+
 # Create a web server
 resource "alicloud_instance" "web" {
   image_id          = "${data.alicloud_images.default.images.0.id}"
@@ -25,5 +30,5 @@ resource "alicloud_instance" "web" {
 resource "alicloud_security_group" "default" {
   name        = "default"
   description = "default"
-  vpc_id = "vpc-abc12345"
+  vpc_id = "${alicloud_vpc.vpc.id}"
 }
