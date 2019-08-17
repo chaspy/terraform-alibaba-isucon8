@@ -36,6 +36,11 @@ resource "alicloud_instance" "web" {
   internet_max_bandwidth_out = 5
 }
 
+resource "alicloud_key_pair_attachment" "attachment" {
+  key_name     = "key_pair_github" # Create key pair by hand
+  instance_ids = ["${alicloud_instance.web.id}"]
+}
+
 # Create security group
 resource "alicloud_security_group" "default" {
   name        = "default"
