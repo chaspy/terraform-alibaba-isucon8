@@ -1,9 +1,3 @@
-provider "alicloud" {
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
-  region     = "${var.region}"
-}
-
 data "alicloud_instance_types" "2c4g" {
   cpu_core_count = 2
   memory_size = 4
