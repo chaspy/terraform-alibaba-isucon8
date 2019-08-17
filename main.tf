@@ -26,11 +26,11 @@ resource "alicloud_eip" "eip" {
 # Create a web server
 resource "alicloud_instance" "web" {
   image_id             = data.alicloud_images.default.images[0].id
-  internet_charge_type = "PayByBandwidth"
+  internet_charge_type = "PayByTraffic"
 
   instance_type              = data.alicloud_instance_types.type.instance_types[0].id
   system_disk_category       = "cloud_efficiency"
-  security_groups            = [alicloud_security_group.default.id]
+  security_groups            = [alicloud_security_group.default.id, alicloud_security_group.allow_basic_rule.id]
   instance_name              = "web"
   vswitch_id                 = alicloud_vswitch.vsw.id
   internet_max_bandwidth_out = 5
@@ -41,6 +41,12 @@ resource "alicloud_security_group" "default" {
   name        = "default"
   description = "default"
   vpc_id      = alicloud_vpc.vpc.id
+}
+
+resource "alicloud_security_group" "allow_basic_rule" {
+  inner_access = true
+  name         = "allow_basic_rule"
+  vpc_id       = alicloud_vpc.vpc.id
 }
 
 output "ip" {
