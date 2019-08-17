@@ -1,1 +1,3 @@
-provider "alicloud" {}
+provider "alicloud" {
+}
+
