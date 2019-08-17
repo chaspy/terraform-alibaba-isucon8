@@ -20,6 +20,9 @@ resource "alicloud_vswitch" "vsw" {
   availability_zone = "ap-northeast-1a"
 }
 
+resource "alicloud_eip" "eip" {
+}
+
 # Create a web server
 resource "alicloud_instance" "web" {
   image_id             = data.alicloud_images.default.images[0].id
@@ -30,6 +33,7 @@ resource "alicloud_instance" "web" {
   security_groups      = [alicloud_security_group.default.id]
   instance_name        = "web"
   vswitch_id           = alicloud_vswitch.vsw.id
+  internet_max_bandwidth_out = 5
 }
 
 # Create security group
