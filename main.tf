@@ -4,7 +4,7 @@ data "alicloud_instance_types" "type" {
 }
 
 data "alicloud_images" "default" {
-  name_regex  = "^ubuntu"
+  name_regex  = "^centos"
   most_recent = true
   owners      = "system"
 }
